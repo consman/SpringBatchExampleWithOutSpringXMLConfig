@@ -29,7 +29,7 @@ public class BasicSpringBatchWrapperApp {
     	
     	SimpleJob sJob = new SimpleJob();
     	
-    	Step step = new BobsStep();    	    	
+    	Step step = new SprBatUsrsStep();    	    	
     	
     	sJob.addStep(step);
     	
@@ -44,6 +44,7 @@ public class BasicSpringBatchWrapperApp {
     	sJob.execute(je);
     	
     	logger.info("Done with the execute method at " + new Date());
+    	
         logger.info("The JobExecution Id is: " + je.getId());
     	
     	Set<Entry <String, Object>> set = je.getExecutionContext().entrySet();
@@ -53,6 +54,7 @@ public class BasicSpringBatchWrapperApp {
     	for (Entry <String, Object> entry: set){
     		logger.info("The String is: " +entry.getKey() + " and the Object is: "+ entry.getValue());
     	}
+    	
     	
     	return je.getStatus().toString();
     	
@@ -124,11 +126,11 @@ public class BasicSpringBatchWrapperApp {
     	
     }
     
-    class BobsStep implements Step{
+    class SprBatUsrsStep implements Step{
 
 		public String getName() {
 			 
-			return "BobsStep";
+			return "SprBatUsrsStep";
 		}
 
 		public boolean isAllowStartIfComplete() {
