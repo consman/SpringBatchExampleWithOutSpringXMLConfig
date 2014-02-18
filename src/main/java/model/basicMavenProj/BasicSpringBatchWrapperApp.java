@@ -1,6 +1,8 @@
 package model.basicMavenProj;
 
 import java.util.Date;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.springframework.batch.core.JobExecution;
@@ -19,6 +21,8 @@ import org.springframework.batch.core.repository.JobRestartException;
 public class BasicSpringBatchWrapperApp {
 	
 	static Logger logger = Logger.getLogger(BasicSpringBatchWrapperApp.class);
+	
+	Set<Entry <String, Object>> jobExecutionEntrySet;
 	
     public String getResult(String inParam){
     	
@@ -39,6 +43,15 @@ public class BasicSpringBatchWrapperApp {
     	sJob.execute(je);
     	
     	logger.info("Done with the execute method at " + new Date());
+        logger.info(" The JobExecution Id is: " + je.getId());
+    	
+    	Set<Entry <String, Object>> set = je.getExecutionContext().entrySet();
+    	
+    	setJobExecutionEntrySet(set);
+    	
+    	for (Entry <String, Object> entry: set){
+    		logger.info("The String is: " +entry.getKey() + " and the Object is: "+ entry.getValue());
+    	}
     	
     	return je.getStatus().toString();
     	
@@ -137,5 +150,13 @@ public class BasicSpringBatchWrapperApp {
     	
     	
     }
+    public Set<Entry<String, Object>> getJobExecutionEntrySet() {
+		return jobExecutionEntrySet;
+	}
+
+	public void setJobExecutionEntrySet(
+			Set<Entry<String, Object>> jobExecutionEntrySet) {
+		this.jobExecutionEntrySet = jobExecutionEntrySet;
+	}
 
 }
