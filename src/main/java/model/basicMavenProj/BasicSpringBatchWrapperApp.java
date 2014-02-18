@@ -22,7 +22,9 @@ public class BasicSpringBatchWrapperApp {
 	
 	static Logger logger = Logger.getLogger(BasicSpringBatchWrapperApp.class);
 	
-	Set<Entry <String, Object>> jobExecutionEntrySet;
+	private Set<Entry <String, Object>> jobExecutionEntrySet;
+	private int cCommitCount = 1;
+
 	
     public String getResult(String inParam){
     	
@@ -44,7 +46,7 @@ public class BasicSpringBatchWrapperApp {
     	
     	logger.info("Done with the execute method at " + new Date());
     	
-    	logger.info(" The JobExecution Id is: " + je.getId());
+        logger.info("The JobExecution Id is: " + je.getId());
     	
     	Set<Entry <String, Object>> set = je.getExecutionContext().entrySet();
     	
@@ -53,7 +55,6 @@ public class BasicSpringBatchWrapperApp {
     	for (Entry <String, Object> entry: set){
     		logger.info("The String is: " +entry.getKey() + " and the Object is: "+ entry.getValue());
     	}
-    	
     	
     	
     	return je.getStatus().toString();
@@ -146,13 +147,21 @@ public class BasicSpringBatchWrapperApp {
 		public void execute(StepExecution stepExecution)
 				throws JobInterruptedException {
 			
-			logger.info("Doing work in the execute method here now at: " + new Date());
-			
-			
+			logger.info("Doing work in the execute method here now at: " + new Date() );
+			logger.info("And the commit count is: "+ stepExecution.getCommitCount());
+			setcCommitCount(stepExecution.getCommitCount());
 		}
     	
     	
     }
+
+	public int getcCommitCount() {
+		return cCommitCount;
+	}
+
+	public void setcCommitCount(int cCommitCount) {
+		this.cCommitCount = cCommitCount;
+	}
 
 	public Set<Entry<String, Object>> getJobExecutionEntrySet() {
 		return jobExecutionEntrySet;

@@ -20,14 +20,21 @@ public class BasicSpringBatchWrapperAppTest extends TestCase {
 	
 	
     public void testBasicSpringBatchWrapperApp()    {
-    	
-        assertTrue( true );
         
         BasicSpringBatchWrapperApp basicSpringBatchWrapperApp = new BasicSpringBatchWrapperApp();
         
         assertEquals ("STARTED" ,basicSpringBatchWrapperApp.getResult("Some basic input String."));
         
         assertEquals(basicSpringBatchWrapperApp.getJobExecutionEntrySet().size(), 0);
+        
+    }
+    public void testBasicSpringBatchWrapperAppBlue()    {
+        
+        BasicSpringBatchWrapperApp basicSpringBatchWrapperApp = new BasicSpringBatchWrapperApp();
+        
+        assertEquals ("STARTED" ,basicSpringBatchWrapperApp.getResult("Some basic input String."));
+        
+        assertEquals(basicSpringBatchWrapperApp.getcCommitCount(),0);
         
     }
 }
