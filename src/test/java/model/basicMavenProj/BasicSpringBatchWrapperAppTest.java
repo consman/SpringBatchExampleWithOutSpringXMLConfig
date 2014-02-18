@@ -27,5 +27,7 @@ public class BasicSpringBatchWrapperAppTest extends TestCase {
         
         assertEquals ("STARTED" ,basicSpringBatchWrapperApp.getResult("Some basic input String."));
         
+        assertEquals(basicSpringBatchWrapperApp.getJobExecutionEntrySet().size(), 0);
+        
     }
 }
