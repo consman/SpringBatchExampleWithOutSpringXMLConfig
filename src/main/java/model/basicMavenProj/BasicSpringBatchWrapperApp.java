@@ -44,7 +44,7 @@ public class BasicSpringBatchWrapperApp {
     	sJob.execute(je);
     	
     	logger.info("Done with the execute method at " + new Date());
-        logger.info(" The JobExecution Id is: " + je.getId());
+        logger.info("The JobExecution Id is: " + je.getId());
     	
     	Set<Entry <String, Object>> set = je.getExecutionContext().entrySet();
     	
