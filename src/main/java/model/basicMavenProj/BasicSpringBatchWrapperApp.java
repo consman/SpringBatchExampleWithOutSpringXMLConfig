@@ -23,6 +23,7 @@ public class BasicSpringBatchWrapperApp {
 	static Logger logger = Logger.getLogger(BasicSpringBatchWrapperApp.class);
 	
 	private Set<Entry <String, Object>> jobExecutionEntrySet;
+	
 	private int cCommitCount = 1;
 	
     public String getResult(String inParam){
