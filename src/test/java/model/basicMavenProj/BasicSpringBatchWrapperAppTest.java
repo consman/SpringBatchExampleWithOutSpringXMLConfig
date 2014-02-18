@@ -28,4 +28,13 @@ public class BasicSpringBatchWrapperAppTest extends TestCase {
         assertEquals(basicSpringBatchWrapperApp.getJobExecutionEntrySet().size(), 0);
         
     }
+    public void testBasicSpringBatchWrapperAppBlue()    {
+        
+        BasicSpringBatchWrapperApp basicSpringBatchWrapperApp = new BasicSpringBatchWrapperApp();
+        
+        assertEquals ("STARTED" ,basicSpringBatchWrapperApp.getResult("Some basic input String."));
+        
+        assertEquals(basicSpringBatchWrapperApp.getcCommitCount(),0);
+        
+    }
 }

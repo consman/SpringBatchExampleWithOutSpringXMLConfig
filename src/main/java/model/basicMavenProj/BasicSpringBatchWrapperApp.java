@@ -22,7 +22,8 @@ public class BasicSpringBatchWrapperApp {
 	
 	static Logger logger = Logger.getLogger(BasicSpringBatchWrapperApp.class);
 	
-	Set<Entry <String, Object>> jobExecutionEntrySet;
+	private Set<Entry <String, Object>> jobExecutionEntrySet;
+	private int cCommitCount = 1;
 	
     public String getResult(String inParam){
     	
@@ -143,9 +144,9 @@ public class BasicSpringBatchWrapperApp {
 		public void execute(StepExecution stepExecution)
 				throws JobInterruptedException {
 			
-			logger.info("Doing work in the execute method here now at: " + new Date());
-			
-			
+			logger.info("Doing work in the execute method here now at: " + new Date() );
+			logger.info("And the commit count is: "+ stepExecution.getCommitCount());
+			setcCommitCount(stepExecution.getCommitCount());
 		}
     	
     	
@@ -157,6 +158,14 @@ public class BasicSpringBatchWrapperApp {
 	public void setJobExecutionEntrySet(
 			Set<Entry<String, Object>> jobExecutionEntrySet) {
 		this.jobExecutionEntrySet = jobExecutionEntrySet;
+	}
+
+	public int getcCommitCount() {
+		return cCommitCount;
+	}
+
+	public void setcCommitCount(int cCommitCount) {
+		this.cCommitCount = cCommitCount;
 	}
 
 }
