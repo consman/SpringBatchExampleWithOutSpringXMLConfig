@@ -20,8 +20,6 @@ public class BasicSpringBatchWrapperAppTest extends TestCase {
 	
 	
     public void testBasicSpringBatchWrapperApp()    {
-    	
-        assertTrue( true );
         
         BasicSpringBatchWrapperApp basicSpringBatchWrapperApp = new BasicSpringBatchWrapperApp();
         
